@@ -60,8 +60,8 @@ console.log("Задача 2");
 let a = 2;
 let b = 3;
 
-P = 2*(a+b);
-S = a*b;
+let P = 2*(a+b);
+let S = a*b;
 
 console.log("Длины сторон: ", a, b );
 console.log("Периметр: ", P);
@@ -72,7 +72,7 @@ console.log("Отношение: ", P/S);
 console.log("Задача 3");
 
 Cels = 25;
-F = 451;
+let F = 451;
 console.log(`${Cels}` + "\xB0C", "соответствует", `${Cels*33.8}` + "\xB0F");
 console.log(`${F}` + "\xB0F", "соответствует", `${F/33.8}` + "\xB0C");
 
