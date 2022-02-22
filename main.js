@@ -71,7 +71,7 @@ console.log("Отношение: ", P/S);
 //Задача 3
 console.log("Задача 3");
 
-Cels = 25;
+let Cels = 25;
 let F = 451;
 console.log(`${Cels}` + "\xB0C", "соответствует", `${Cels*33.8}` + "\xB0F");
 console.log(`${F}` + "\xB0F", "соответствует", `${F/33.8}` + "\xB0C");
