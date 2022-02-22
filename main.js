@@ -80,12 +80,7 @@ console.log(`${F}` + "\xB0F", "соответствует", `${F/33.8}` + "\xB0C
 console.log("Задача 4");
 
 let year = prompt('Введите любой год цифрами');
-if (year%4 != 0) {
-    alert("Год не високосный");
-}
-else if (year%100 != 0) {
-    alert("Год високосный")
-}
+alert(year%4 == 0 ? (year%100 != 0 ? "False" : "True") : "False");
 
 //Задача 5
 console.log("Задача 5");
