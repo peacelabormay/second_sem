@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Лабораторная №3</title>
+</head>
+
+<body>
+
+    <h1 style="display: none;">Лабораторная работа №3</h1>
+    <div class="container">
+        <div style="text-align: center;">
+            <input type="button" value="Открыть" id="open"></input>
+        </div>
+        <div id="openModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Форма.Вариант1</h3>
+                        <input type="button" value="Закрыть" id="close"></input>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post" id="form">
+                            <p><label for="mail">Почта</label>
+                            <input type="email" name="email" id="mail" value="" required></p>
+                            <p><label for="pass">Пароль</label>
+                            <input type="password" name="password" id="pass" minlength="6" maxlength="20" value="" required></p>
+                            <p><input type="checkbox" name="agreement" id="agree" required>
+                            <label for="agree">Я согласен(а) с договором</label></p>
+                            <p><input type="checkbox" name="agreement_person" id="agree_pers" required>
+                            <label for="agree_pers">Я согласен(а) с обработкой персональных данных</label></p>
+                            <input type="submit" value="Отправить" name="send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js3.js"></script>
+</body>
+
+</html>
