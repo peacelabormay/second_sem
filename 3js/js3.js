@@ -1,25 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
-    console.log(scrollbar);
-    document.querySelector('input').addEventListener('click', function () {
-        document.body.style.overflow = 'hidden';
-        document.querySelector('.modal').style.marginLeft = scrollbar;
-    });
-    document.getElementById('close').addEventListener('click', function () {
-        document.body.style.overflow = 'visible';
-        document.querySelector('.modal').style.marginLeft = '0px';
-    });
-});
 
 let view = document.querySelector('.modal');//модальное окно
 
 //открытие окна по нажатию кнопки
 document.getElementById('open').onclick = function () {
+    document.body.style.overflow='hidden';
     view.classList.add('show');
 }
 
 //закрытие окна при нажатии кнопки
 document.getElementById('close').onclick = function () {
+    document.body.style.overflow='';
     view.classList.remove('show');
 }
 
