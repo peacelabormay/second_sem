@@ -28,24 +28,13 @@ function isPalindrome(word) {
 
 //Задача3
 console.log("Задача 3. matrixAddition");
-/*
-function checkMatrix(arr1, arr2) {
-    if (arr1.length !== arr2.length)
-        console.log('Матрицы не равны!');
-    else {
-        for (let n=1; n < arr1.length; n++){
-            if ((arr1[n-1].length !== arr1[n])||(arr2[n-1].length !== arr2[n])||(arr1[n-1].length !== arr2[n-1].length))
-            console.log('Матрицы не равны!');
-        }
-    }
-}
-*/
 
 function checkMatrix(arr1, arr2) {
     if (arr1.length == arr2.length)
         {
         for (let n=1; n < arr1.length; n++) {
-            if ((arr1[n-1].length == arr1[n].length)&&(arr2[n-1].length && arr2[n].length)&&(arr1[n-1].length == arr2[n-1].length)) {
+            if ((arr1[n-1].length == arr1[n].length)&&(arr2[n-1].length ==
+                arr2[n].length)&&(arr1[n-1].length == arr2[n-1].length)) {
                 //console.log('матрицы равны');
                 return 1;
             }
@@ -59,12 +48,6 @@ function checkMatrix(arr1, arr2) {
 
 function matrixAddition(arr1, arr2) {
     let arr3 = [];
-    //console.log(arr1[0][1] + arr2[0][1]);
-    
-    
-   
-   
-    //if ((arr1[0].length == arr1[1].length)&&(arr2[0].length==arr2[1].length)&&(arr1[0].length==arr2[0].length)) {
     if (checkMatrix(arr1, arr2)) {  
         for (let i=0; i<=arr1.length-1; i++) {
                 for (let k=0; k<=arr1[0].length-1; k++){
@@ -81,7 +64,7 @@ function matrixAddition(arr1, arr2) {
     
 }
 let matrix1 = [[1,2], [0,0], [5,3]], matrix2 = [[2,3], [7,8], [8,7]];
-console.log(matrix1.length);
+//console.log(matrix1.length);
 matrixAddition(matrix1, matrix2);
 
 //Задача 4
