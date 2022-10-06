@@ -91,7 +91,7 @@ let student = {
     last_name: "Иванов",
     first_name: "Иван"
 };
-console.log(`Список свойств: `, Object.keys(student));
+console.log(`Список свойств: `, Object.keys(student));//console.dir() или console.table(), можно еще использовать методы dir и table
 console.log(`Студент ${student.first_name} ${student.last_name} учится в ${student.group} группе`);
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <style>
+        button {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 10%;
+            border-radius: 15px;
+            border-color: green;
+            margin-right: -50%;
+        }
+    </style>
+
+    <button id="APIbutton">Отправить запрос</button>
+
+    <script>
+        const getData = async (url) => {
+            const res = await fetch(url)
+            const json = await res.json()
+            return json
+        }
+
+        document.getElementById("APIbutton").addEventListener('click', function (event) {
+            getData('http://makeup-api.herokuapp.com/api/v1/products.json?product_type=eyeliner')
+                .then(data => {
+                    Object.keys(data).forEach((i) => document.write
+                        ('<div style=\"border: 1px solid green; margin: 5px; padding: 0px 20px; font-style: normal;\"><p>Brand: '
+                            + data[i].brand + '</p><p>Name: ' + data[i].name +
+                            '</p><p style=\"font-style: italic;\">Description: ' + data[i].description + '</p></div>'))
+                })
+                .catch(error => console.log(error.message))
+        })
+    </script>
+</body>
+
+</html>
