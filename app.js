@@ -10,12 +10,12 @@ const server = http.createServer(async (request, response) => {
     /*
     let params = new URLSearchParams(request.url);
     console.log((params.get('num2')));*/
-    
+    /*
     let rawUrl = 'https://stackabuse.com/?page=2&limit=3'; 
     let parsedUrl = url.parse(rawUrl);
     let [num11, num22] = querystring.parse(parsedUrl.query);
     console.log(num11, num22);
-    
+    */
 
     let [oki, num1, num2] = request.url.split(/num1=|&num2=/);
 
