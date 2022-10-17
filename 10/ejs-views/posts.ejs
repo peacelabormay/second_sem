@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <h1>Posts:</h1>
+  <ul>
+    <% if (posts.length) { %>
+      <% posts.forEach(({ id, name, description, picture, author, status }) => { %>
+      <li>
+        <article>
+          <div class="form-image">
+            <img src=<%= picture %> alt="image">
+          </div>
+          <div class="form-text">
+          <h2>
+            <a href="/posts/<%= id %>"><%= name %></a>
+          </h2>
+          <p><%= description %></p>
+          <div class="info">
+            <span><%= author %></span>
+            <span><%= status %></span>
+          </div>
+          </div>
+        </article>
+      </li>
+    <% }) %>
+  <% } %>
+  </ul>
+</body>
+</html>
