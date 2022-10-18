@@ -6,20 +6,20 @@
   <h1>Posts:</h1>
   <ul>
     <% if (posts.length) { %>
-      <% posts.forEach(({ id, name, description, picture, author, status }) => { %>
+      <% posts.forEach(({ id, Name, Description, Picture, Status }) => { %>
       <li>
         <article>
           <div class="form-image">
-            <img src=<%= picture %> alt="image">
+            <img src=<%= Picture %> alt="image">
           </div>
           <div class="form-text">
           <h2>
-            <a href="/posts/<%= id %>"><%= name %></a>
+            <a href="/posts/<%= id %>"><%= Name %></a>
           </h2>
-          <p><%= description %></p>
+          <p><%= Description %></p>
           <div class="info">
-            <span><%= author %></span>
-            <span><%= status %></span>
+            <span></span>
+            <span><%= Status %></span>
           </div>
           </div>
         </article>

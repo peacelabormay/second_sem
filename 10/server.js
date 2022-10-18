@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 
-const { addModel } = require('./supabaseService.js');
-const { upload } = require('./fileFilter.js');
+const { addModel } = require('./models/AddModel.js');
+const { selectModels } = require('./models/GetModel.js');
+const { upload } = require('./middlewares/fileFilter.js');
 /*
 import express from "express";
 
@@ -42,8 +43,15 @@ app.get('/', (req, res) => {
     .render(createPath('posts'), { posts });
 })
 
-app.get('/posts', (req, res) => {
-    const posts = [
+app.get('/posts', async (req, res) => {
+    /*
+    let data = await getModel(5);
+    console.log(data);
+    */
+    let posts = await selectModels();
+    console.log(posts);
+
+    const data = [
         {id: '1', name: 'cub', description: 'super puper cub', picture: '../images/heh.png', author: 'me', status: 'undelayed'},
         {id: '1', name: 'cub', description: 'super puper cub', picture: '../images/heh.png', author: 'me', status: 'undelayed'},
     ];
@@ -81,11 +89,14 @@ app.post("/create", upload, async (req, res) => {
       res.send(error);
       return;
     }
+
+    
   
     let model = {
       Name: req.body.name, 
       Description: req.body.description,
-      Picture: req.files[0].path
+      Picture: "/" + path.basename(req.files[0].path),
+      //Picture: filename,
     };
     
     let data = await addModel(model);
