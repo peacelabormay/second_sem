@@ -79,6 +79,7 @@ getData("http://localhost:3000/api/posts")
 
     let img = document.createElement('img');
     img.setAttribute('src', posts[i].Picture);
+    img.setAttribute('width', '100%');
 
     let h2 = document.createElement('h2');
     let a = document.createElement('a');
@@ -113,6 +114,8 @@ getData("http://localhost:3000/api/posts")
   });
 })
 .catch(error => console.log(error.message))
+
+
 
   /*
   async function GetPosts() {

@@ -1,7 +1,7 @@
 const path = require('path');
 
 const { addModel } = require('../models/AddModel.js');
-const { selectModels } = require('../models/GetModel.js');
+
 const createPath = require('../middlewares/create-path');
 
 const getHome = (req, res) => {
@@ -18,13 +18,6 @@ const getPosts = async (req, res) => {
     .sendFile(createPath('posts'));
 }
 
-const getApiPosts = async (req, res) => {
-  let posts = await selectModels();
-  console.log(posts);
-  res
-    .status(200)
-    .send(JSON.stringify(posts));
-}
 
 const getPost = (req, res) => {
     const post = {
@@ -111,13 +104,10 @@ const sendPost = async (req, res, next) => {
     res.send(answer);
 };
    
-  
-
 
 module.exports = {
     getHome,
     getPosts,
-    getApiPosts,
     getPost,
     addPost,
     sendPost,

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/main.css">
 </head>
-<body>
+<body class="put">
   <nav>
     <ul>
       <li><a href="/">Home</a></li>
@@ -16,11 +16,9 @@
       <li><a href="/contacts">Contacts</a></li>
     </ul>
   </nav>
+  <!-- 
   <article>
-    
-
-    
-      <div class="form-image"><!-- image-->
+      <div class="form-image">
           <img alt="image" src="">
       </div>
       <div class="form-text" >
@@ -39,7 +37,95 @@
           <input type="submit" value="(UN)DELAY">
         </div>
       </div>
-    
   </article>
+  -->
 </body>
 </html>
+
+<script>
+  const getData = async (url) => {
+  const res = await fetch((url),{
+    method: "GET",
+    headers: { "Accept": "application/json" }
+  })
+  const json = await res.json()
+  return json
+}
+
+let [part, params] = window.location.href.split('/posts/');
+console.log(window.location.href);
+console.log(params);
+
+
+getData(`http://localhost:3000/api/posts/${params}`)
+.then(post => {
+  console.log(post);
+  console.log(post[0].Name);
+  body = document.querySelector('.put');
+    let article = document.createElement('article');
+
+    let div1 = document.createElement('div');
+    let div2 = document.createElement('div');
+    let div3 = document.createElement('div');
+
+    div1.classList.add('form-image');
+    div2.classList.add('form-text');
+    div3.classList.add('form-button');
+
+    let input1 = document.createElement('input');
+    let input2 = document.createElement('input');
+    let input3 = document.createElement('input');
+
+    input1.setAttribute('type', 'submit');
+    input2.setAttribute('type', 'submit');
+    input3.setAttribute('type', 'submit');
+
+    input1.setAttribute('value', 'EDIT');
+    input2.setAttribute('value', 'DELAY');
+    input3.setAttribute('value', '(UN)DELAY');
+
+    div3.appendChild(input1);
+    div3.appendChild(input2);
+    div3.appendChild(input3);
+
+    let img = document.createElement('img');
+    img.setAttribute('src', post[0].Picture);
+    img.setAttribute('width', '100%');
+
+    let div4 = document.createElement('div');
+    let h1 = document.createElement('h1');
+    h1.innerHTML = post[0].Name;
+    div4.appendChild(h1);
+    
+    let div5 = document.createElement('div');
+    let p = document.createElement('p')
+    p.innerHTML = post[0].Description;
+    div5.appendChild(p);
+
+    let div6 = document.createElement('div');
+    let span = document.createElement('span');
+    span.innerHTML = post[0].Status;
+    div6.appendChild(span);
+    
+
+    
+    //div3.appendChild(span);
+    
+    
+    div1.appendChild(img);
+    div2.appendChild(div4);
+    div2.appendChild(div5);
+    div2.appendChild(div6);
+    div2.appendChild(div3);
+
+    article.appendChild(div1);
+    article.appendChild(div2);
+
+    body.appendChild(article);
+    
+
+    
+})
+.catch(error => console.log(error.message));
+
+</script>

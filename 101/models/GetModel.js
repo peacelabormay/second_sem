@@ -13,4 +13,21 @@ async function selectModels() {
     }
 }
 
-module.exports = { selectModels };
+async function selectModel(ID) {
+    try {
+        let {data, error} = await supabase
+            .from('Models')
+            .select('*')
+            .eq('id', ID);
+//        console.log(data);    
+        if (error) throw error
+        return await data;
+    } catch (e) {
+        throw e
+    }
+}
+
+module.exports = { 
+    selectModels,
+    selectModel,
+ };

@@ -14,7 +14,6 @@ const {
 
 router.get('/', getHome);
 router.get('/posts', getPosts);
-router.get('/api/posts', getApiPosts);
 router.get('/posts/:id', getPost);
 router.get('/add-post', addPost);
 router.post("/create", upload, sendPost);

@@ -1,6 +1,7 @@
 const express = require('express');
 
 const postRouters = require('./routers/post-routes');
+const apiPostRouters = require('./routers/api-post-routes');
 const createPath = require('./middlewares/create-path');
 
 const app = express();
@@ -18,6 +19,7 @@ app.listen(PORT, (error) => {
 });
 
 app.use(postRouters);
+app.use(apiPostRouters);
 
 app.use((req, res) => {
   res
