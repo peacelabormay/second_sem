@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Node.js Course</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/add-post">New Post</a></li>
+      <li><a href="/delayed">Delayed</a></li>
+    </ul>
+  </nav>
+  <h1>Posts:</h1>
+  <ul class = "list">
+    <li>
+      <article>
+        <div class="form-image">
+          <img src="/" alt="image">
+        </div>
+        <div class="form-text">
+        <h2>
+          <a href="/posts/1">Name model</a>
+        </h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quidem provident, dolores, vero laboriosam nemo mollitia impedit unde fugit sint eveniet, minima odio ipsum sed recusandae aut iste aspernatur dolorem.</p>
+        <div class="info">
+          <span>Name model</span>
+          <span>Name user</span>
+        </div>
+        </div>
+      </article>
+    </li>
+  </ul>
+</body>
+</html>
+
+<script>
+
+const getData = async (url) => {
+  const res = await fetch((url),{
+    method: "GET",
+    headers: { "Accept": "application/json" }
+  })
+  const json = await res.json()
+  return json
+}
+
+getData("http://localhost:3000/api/posts")
+.then(posts => {
+  /*
+  let rows = document.querySelector("tbody");
+  Object.keys(posts).forEach((i) => {
+    let tr = document.createElement('tr');
+    tr.innerHTML = i;
+    rows.append(tr);}
+    );
+  */
+  /*
+  Object.keys(posts).forEach((i) => document.write
+  ('<div style=\"border: 1px solid green; margin: 5px; padding: 0px 20px; font-style: normal;\"><p>Brand: '
+                            + posts[i].id + '</p><p>Name: ' + posts[i].Name +
+                            '</p><p style=\"font-style: italic;\">Description: ' + posts[i].Description + '</p></div>')
+)*/
+  //let ul = document.getElementsByTagName('ul');
+  let ul1 = document.querySelector(".list");
+  Object.keys(posts).forEach((i) => {
+    let li = document.createElement('li');
+    let article = document.createElement('article');
+
+    let div1 = document.createElement('div');
+    let div2 = document.createElement('div');
+
+    div1.classList.add('form-image');
+    div2.classList.add('form-text');
+
+    let img = document.createElement('img');
+    img.setAttribute('src', posts[i].Picture);
+
+    let h2 = document.createElement('h2');
+    let a = document.createElement('a');
+    a.setAttribute('href', `/posts/${posts[i].id}`);
+    a.innerHTML = posts[i].Name;
+    h2.appendChild(a);
+    let p = document.createElement('p')
+    p.innerHTML = posts[i].Description;
+
+    let div3 = document.createElement('div');
+    div3.classList.add('info');
+    let span1 = document.createElement('span');
+    let span2 = document.createElement('span');
+    span1.innerHTML = posts[i].Author;
+    span2.innerHTML = posts[i].Status;
+
+    div3.appendChild(span2);
+    div3.appendChild(span1);
+
+    div2.appendChild(h2);
+    div2.appendChild(p);
+    div2.appendChild(div3);
+    
+    div1.appendChild(img);
+    article.appendChild(div1);
+    article.appendChild(div2);
+
+    li.appendChild(article);
+
+    ul1.appendChild(li);
+
+  });
+})
+.catch(error => console.log(error.message))
+
+  /*
+  async function GetPosts() {
+    const responce = await fetch("/api/posts", {
+      method: "GET",
+      headers: { "Accept": "application/json" }
+  });
+  
+    if (response.ok === true) 
+    {
+      // получаем данные
+      const posts = await response.json();
+      Object.keys(posts).forEach((i) => rows.append(row(i)));
+      
+    }
+
+  }
+
+  GetPosts().then(responce => {
+    const posts = await response.json();
+    Object.keys(posts).forEach((i) => rows.append(row(i)));
+  })*/
+
+</script>

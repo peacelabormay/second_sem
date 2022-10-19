@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LR8</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/add-post">New Post</a></li>
+      <li><a href="/delayed">Delayed</a></li>
+    </ul>
+  </nav>
+
+  <form id="formElem" action="/create" method="post" enctype="multipart/form-data">
+    <div class="form-image"><!-- image-->
+        <input type="file" name="image" src="" alt="Download image" width="100%">
+    </div>
+    <div  class="form-text" >
+      <div>
+        <label>Model name
+          <input type="text" name="name">
+        </label>
+      </div>
+      <div>
+        <label>Description
+          <textarea name="text"></textarea>
+        </label>
+      </div>
+      <div class="form-button">
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+  </form>
+
+</body>
+</html>
+
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+
+    fetch('/create', {
+      method: 'POST',
+      body: new FormData(formElem)
+    })
+      .then((res) => res.json())
+      .then((json) => console.table(json))
+      .catch((error) => alert(`Ошибка\n${error}`));
+  }
+</script>
