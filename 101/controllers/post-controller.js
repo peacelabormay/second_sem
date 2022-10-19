@@ -69,7 +69,7 @@ const sendPost = async (req, res, next) => {
 
     let model = {
       Name: req.body.name, 
-      Description: req.body.description,
+      Description: req.body.text,
       Picture: "/" + path.basename(req.files[0].path),
       //Picture: filename,
     };
